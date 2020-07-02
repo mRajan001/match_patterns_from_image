@@ -4,30 +4,28 @@ from MTM import matchTemplates, drawBoxesOnRGB
 from skimage.data import coins
 import matplotlib.pyplot as plt
 
-#%% 
-
+#%% select a template directory
 template_dir = "ellipse_templates/"
-image_gray = cv2.imread("imgg2.png", 0)
 
-plt.imshow(image_gray, cmap="gray")
+image_gray = cv2.imread("imgg2.png", 0) #load image in a graysale
 
-#%%
-# list_ = []
+plt.imshow(image_gray, cmap="gray") #plot the image
 
-# for i in os.listdir(template_dir):
-#     template = cv2.imread(template_dir+i, 0)
-#     list_.append((str(i), template))
 
-# match = matchTemplates(list_, image_gray, score_threshold=0.60, method=cv2.TM_CCOEFF_NORMED, maxOverlap=0)
-# print("Found {} Ellipses".format( len(match.index) ) )
-# match
-
-# image = cv2.imread("imgg5.png")
-# Overlay = drawBoxesOnRGB(image, match, showLabel=False)
-# plt.imshow(Overlay)
-# %%
+# %% A function to match the templates with the image
 
 def match_image_template(image, template_dir, thresh):
+    """
+    A function to match the templates with the image.
+    Input: 
+    image: Image from which needs to find patterns
+    template_dir: A directory containing (cropped) template images
+    thresh: Score Threshold Value. 
+
+    Output: 
+
+    """
+
     list_ = []
 
     for i in os.listdir(template_dir):
@@ -38,7 +36,10 @@ def match_image_template(image, template_dir, thresh):
     print("Found {} Ellipses".format( len(match.index) ) )
     return match
 
-match_image_template(image_gray, template_dir, 20)
+matches = match_image_template(image_gray, template_dir, 20)
 
-# %%
+# %% 
+image = cv2.imread("imgg2.png", )
 
+draw_matches = drawBoxesOnRGB(image, matches,boxColor=(0, 255, 0), showLabel=False)
+plt.imshow(draw_matches)
