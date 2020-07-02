@@ -22,7 +22,8 @@ def match_image_template(image, template_dir, thresh):
     template_dir: A directory containing (cropped) template images
     thresh: Score Threshold Value. 
 
-    Output: 
+    Output: matched patterns in pandas dataframe
+    BBox, Score, templateName
 
     """
 
