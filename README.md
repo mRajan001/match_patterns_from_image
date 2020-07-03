@@ -15,10 +15,11 @@ scikit-image 0.17.2
 
 ## Setup 
 To match the patterns, used Multi-Template-Matching
-''' 
+``` 
 pip install Multi-Template-Matching
-'''
+```
 
 Note: NUmPy and Scipy should matches below versions to avoid error.
 NumPy 1.18.1
 Scipy 1.1.0
+
