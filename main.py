@@ -11,7 +11,6 @@ image_gray = cv2.imread("imgg2.png", 0) #load image in a graysale
 
 plt.imshow(image_gray, cmap="gray") #plot the image
 
-
 # %% A function to match the templates with the image
 
 def match_image_template(image, template_dir, thresh):
