@@ -3,6 +3,7 @@ import cv2, mtm, os
 from MTM import matchTemplates, drawBoxesOnRGB
 from skimage.data import coins
 import matplotlib.pyplot as plt
+import numpy as np
 
 #%% select a template directory
 template_dir = "ellipse_templates/"
@@ -32,11 +33,12 @@ def match_image_template(image, template_dir, thresh):
         template = cv2.imread(template_dir+i, 0)
         list_.append((str(i), template))
 
-    match = matchTemplates(list_, image, score_threshold=thresh/100, method=cv2.TM_CCOEFF_NORMED, maxOverlap=0)
+    match = matchTemplates(list_, image, score_threshold=thresh/100, method=cv2.TM_CCOEFF_NORMED, maxOverlap=0.30)
     print("Found {} Ellipses".format( len(match.index) ) )
+    print(match)
     return match
 
-matches = match_image_template(image_gray, template_dir, 20)
+matches = match_image_template(image_gray, template_dir, 30)
 
 # %% 
 image = cv2.imread("imgg2.png", )
